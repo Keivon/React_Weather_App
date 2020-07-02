@@ -1,0 +1,20 @@
+.App {
+  display: flex;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(231, 231, 231);
+}
+
+.Header {
+  height: 33vh;
+
+}
+
+.Text {
+  color: white;
+}
+
+
+
+
