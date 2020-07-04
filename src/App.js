@@ -11,15 +11,22 @@ function App() {
     
 }, []);
 
-  return (
-      <div className="App">
-        <div className="Current">
+weatherContext.state.isLoading ? console.log("Lo") : console.log(weatherContext.state);
+return weatherContext.state.isLoading ? (
+  <div>
+    <p> Hey </p>
+  </div>
+
+
+) : (
+      <div className=" App">
+        <div className="container">
           <Current />
         </div>
-        <div className="ProgressBar">
+        <div className="container">
           <ProgressBar />
         </div>
-        <div className="FiveDayForecast">
+        <div className="container ">
           <FiveDayForecast />
         </div>
       </div>

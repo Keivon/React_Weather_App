@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { WeatherContext } from '../Context';
-
+import moment from 'moment';
 
 
 
@@ -9,15 +9,9 @@ function Current() {
   const weatherContext = useContext(WeatherContext);
 
 
-  weatherContext.state.isLoading ? console.log("Lo") : console.log(weatherContext.state.currentF);
-  return weatherContext.state.isLoading ? (
-    <div>
-      <p> Hey </p>
-    </div>
-
-
-  ) : (
-      <div>
+ 
+  return (
+      <div className="container current">
 
         <p>{weatherContext.state.currentF.name}</p>
         <p>{weatherContext.state.currentF.weather[0].main}</p>

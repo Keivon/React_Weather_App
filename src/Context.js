@@ -1,5 +1,7 @@
 import React, { useReducer, useEffect } from 'react'
 
+let toggle = true;
+
 const reducer = (state, action) => {
     switch (action.type) {
         case "FETCH_SUCCESS":
@@ -9,6 +11,11 @@ const reducer = (state, action) => {
             };
         case "FETCH_ERROR":
             return { ...state, error: "Fail to get data" };
+
+        case "RELOAD_FETCH":
+            toggle = toggle? false : true;
+            return state;
+        
         default:
             return state;
     }
@@ -16,17 +23,18 @@ const reducer = (state, action) => {
 
 
 
-const initialState = { currentF: {}, FiveDayF: {}, isLoading: true, error: "" }
+const initialState = { currentF: {}, FiveDayF: {}, isLoading: true, error: ""}
 const WeatherContext = React.createContext(initialState);
 function WeatherProvider(props) {
     const [state, dispatch] = useReducer(reducer, initialState);
+    
 
     useEffect(() => {
 
        async  function fetchData() {
             const URL = [
-                `http://api.openweathermap.org/data/2.5/weather?q=London&appid=${process.env.REACT_APP_API_KEY}`,
-                `http://api.openweathermap.org/data/2.5/forecast?q=London&appid=${process.env.REACT_APP_API_KEY}`
+                `http://api.openweathermap.org/data/2.5/weather?q=London&appid=${process.env.REACT_APP_API_KEY}&units=metric`,
+                `http://api.openweathermap.org/data/2.5/forecast?q=London&appid=${process.env.REACT_APP_API_KEY}&units=metric`
             ]
             try {
                 Promise.all([
