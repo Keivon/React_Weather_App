@@ -1,18 +1,47 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 
 
 
 
-function ProgressBar() {
-  return (
+function ProgressBar({progress}) {
+  const [value, setValue] = React.useState("0");
+  const [restart, setrestart] = React.useState(0);
+  
+
+  useEffect(() => {
+    setrestart(0)
+    setTimeout(function(){ setValue(progress);
+      setrestart(1) }, 800);
+  },[progress]);
+
+
+  const fillerStyles = {
+    height: '100%',
+    width: `${value}`,
+    transition: `width 60s ease-in`,
+    borderRadius: 'inherit',
+  }
+
+
+
+  return restart?(
     <>
-    <div className="progress">
-  <div className="progress-bar bg-warning" role="progressbar"  
-  aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
+      <div className="progress ">
+        <div className="progress-bar progress-bar-striped bg-warning" 
+        style={fillerStyles}>
+        </div>
+      </div>
+
     </>
-  );
+  ):
+  (<>
+   <div className="progress ">
+   <div className="progress-bar progress-bar-striped bg-warning" 
+        style={{width:"0%"}}>
+        </div>
+   </div>
+  </>);
 }
 
 export default ProgressBar;
