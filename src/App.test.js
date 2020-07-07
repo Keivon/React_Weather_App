@@ -1,4 +1,32 @@
+
+import React from 'react';
+import { render, cleanup } from '@testing-library/react'
+import App from './App';
 import reducer from "./reducer";
+import { WeatherProvider, WeatherContext} from './Context'
+
+
+const renderWithContext = (
+  component) => {
+  return {
+    ...render(
+        <WeatherProvider value={WeatherContext}>
+            {component}
+        </WeatherProvider>)
+  }
+}
+
+afterEach(cleanup);
+
+it('checks to see if the api call was a success', async () => {
+    const { findByText } = renderWithContext(<App />)
+    const items = await findByText(/London/)
+    expect(items).toBeInTheDocument() 
+    
+  
+})
+
+
 
 
 

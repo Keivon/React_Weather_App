@@ -43,7 +43,7 @@ function App() {
       setprogress("0%");
       fetchData();
       setprogress("100%");
-    }, 21000);
+    }, 61000);
     return () => clearInterval(interval);
     // eslint-disable-next-line
   }, []);

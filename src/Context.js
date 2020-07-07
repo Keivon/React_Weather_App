@@ -4,8 +4,7 @@ import reducer from'./reducer'
 
 
 
-
-const initialState = { currentF: {}, FiveDayF: {}, isLoading: true, error: "", }
+const initialState = { currentF: {}, FiveDayF: {}, isLoading: true, error: "" }
 const WeatherContext = React.createContext(initialState);
 function WeatherProvider(props) {
     const [state, dispatch] = useReducer(reducer, initialState);

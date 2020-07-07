@@ -7,7 +7,7 @@ import { WeatherContext } from '../Context';
 function Current() {
 
   const weatherContext = useContext(WeatherContext);
-//moment(new Date().setTime(day.dt * 1000)).format('ddd')
+
 
  
   return (
