@@ -12,12 +12,12 @@ const [reload, setreload] = useState(3);
     return weatherContext.state.FiveDayF.map((day, ind) => (
       
       <li key={ind} className="list-group-item list-group2" >
-        <i className="d-sm-flex justify-content-between ">
+        <i className="d-flex justify-content-between ">
           <i className="text-alignment"><i className="mr-5">
             {moment(day.dt_txt).format('ddd')}</i>
-            <i className="col">{ <CountUp end={Math.round(day.main.temp )} duration={reload} redraw={true}/> }°c
-            </i></i><i className="col-6 mr-4"></i>
-          <i className="col text-center"><img src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
+            <i className="col-xs-8">{ <CountUp end={Math.round(day.main.temp )} duration={reload} redraw={true}/> }°c
+            </i></i><i className="col-xs-8 mr-4"></i>
+          <i className="col-xs-8 text-center"><img src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
             alt="Weather icon" /><span className="text-span">{day.weather[0].description}</span></i>
         </i>
       </li>
